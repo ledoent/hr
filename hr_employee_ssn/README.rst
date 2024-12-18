@@ -1,6 +1,6 @@
-=====================
-HR Employee SSN & SIN
-=====================
+===============
+HR Employee SIN
+===============
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -28,8 +28,8 @@ HR Employee SSN & SIN
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows to use employee's SSN & SIN fields by exposing them
-in the user interface.
+This module allows to use employee's SIN field by exposing them in the
+user interface.
 
 **Table of contents**
 

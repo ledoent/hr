@@ -9,9 +9,8 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form" />
         <field name="arch" type="xml">
-            <field name="passport_id" position="after">
-                <field name="ssnid" groups="hr.group_hr_user" />
-                <field name="sinid" groups="hr.group_hr_user" />
+            <field name="ssnid" position="after">
+                <field name="sinid" />
             </field>
         </field>
     </record>
