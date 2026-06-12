@@ -1,7 +1,7 @@
 # Copyright 2025 Ángel Rivas <angel.rivas@sygel.es>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -53,19 +53,17 @@ class CollectiveAgreement(models.Model):
         index=True,
     )
 
-    _sql_constraints = [
-        ("code_uniq", "unique(code)", "The code must be unique"),
-        ("name_uniq", "unique(name)", "The name must be unique"),
-    ]
+    _code_uniq = models.Constraint("unique(code)", "The code must be unique")
+    _name_uniq = models.Constraint("unique(name)", "The name must be unique")
 
     def copy_data(self, default=None):
         default = dict(default or {})
         vals_list = super().copy_data(default=default)
         for agreement, vals in zip(self, vals_list, strict=False):
             if "code" not in default:
-                vals["code"] = _("%s (copy)", agreement.code)
+                vals["code"] = self.env._("%s (copy)", agreement.code)
             if "name" not in default:
-                vals["name"] = _("%s (copy)", agreement.name)
+                vals["name"] = self.env._("%s (copy)", agreement.name)
             vals["state"] = "draft"
         return vals_list
 
@@ -74,7 +72,9 @@ class CollectiveAgreement(models.Model):
         for record in self:
             if record.end_date and record.end_date < record.publication_date:
                 raise ValidationError(
-                    _("The end date cannot be earlier than the publication date.")
+                    self.env._(
+                        "The end date cannot be earlier than the publication date."
+                    )
                 )
 
     def action_draft(self):
@@ -85,7 +85,7 @@ class CollectiveAgreement(models.Model):
         expired = self.filtered(lambda r: r.end_date and r.end_date < today)
         if expired:
             raise ValidationError(
-                _(
+                self.env._(
                     'The collective agreements "%s" cannot be activated '
                     "because their end date has already passed.",
                     ", ".join(expired.mapped("code")),
@@ -97,7 +97,7 @@ class CollectiveAgreement(models.Model):
         invalid = self.filtered(lambda r: r.state != "active")
         if invalid:
             raise ValidationError(
-                _(
+                self.env._(
                     'The collective agreements "%s" cannot be finished '
                     "because they are not in active state.",
                     ", ".join(invalid.mapped("code")),
@@ -109,7 +109,7 @@ class CollectiveAgreement(models.Model):
         invalid = self.filtered(lambda r: r.state in ("finished", "cancelled"))
         if invalid:
             raise ValidationError(
-                _(
+                self.env._(
                     'The collective agreements "%s" cannot be cancelled '
                     "because they are already finished or cancelled.",
                     ", ".join(invalid.mapped("code")),

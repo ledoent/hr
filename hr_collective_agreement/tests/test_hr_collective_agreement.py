@@ -12,6 +12,7 @@ class TestCollectiveAgreement(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.company = cls.env["res.company"].create({"name": "Test Company"})
         cls.scope = cls.env["collective.agreement.scope"].create({"name": "Scope Test"})
         cls.official_pub = cls.env["collective.agreement.official.publication"].create(

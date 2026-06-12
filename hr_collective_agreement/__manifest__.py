@@ -4,13 +4,14 @@
 {
     "name": "Hr Collective Agreement",
     "summary": "Create and manage collective agreements",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "Sygel, Odoo Community Association (OCA)",
     "category": "Human Resources",
     "website": "https://github.com/OCA/hr",
-    "depends": ["hr_contract"],
+    "depends": ["hr"],
     "data": [
         "security/ir.model.access.csv",
+        "security/collective_agreement_security.xml",
         "views/collective_agreement_views.xml",
         "views/collective_agreement_scope_views.xml",
         "views/collective_agreement_publication_views.xml",

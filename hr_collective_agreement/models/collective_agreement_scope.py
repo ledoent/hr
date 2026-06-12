@@ -10,4 +10,4 @@ class CollectiveAgreementScope(models.Model):
 
     name = fields.Char(required=True)
 
-    _sql_constraints = [("name_uniq", "unique(name)", "The name must be unique.")]
+    _name_uniq = models.Constraint("unique(name)", "The name must be unique.")
