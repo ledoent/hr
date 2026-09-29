@@ -1,0 +1,5 @@
+- Stefano Consolaro \<<stefano.consolaro@mymage.it>\>
+- [APSL-Nagarro](<https://apsl.tech>):
+  - Bernat Obrador \<<bobrador@apsl.net>\>
+- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
+- Don Kendall \<<dkendall@ledoweb.com>\>
