@@ -1,2 +1,3 @@
 - Saran Lim. \<<saranl@ecosoft.co.th>\>
 - `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
+- Don Kendall \<<dkendall@ledoweb.com>\>
